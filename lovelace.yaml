@@ -556,7 +556,7 @@ views:
         tap_action:
           action: more-info
         custom_fields:
-          label: Wiek fitness
+          label: Sugerowany trening
           value: "[[[\n  const raw = states['sensor.garmin_connect_fitness_age']?.state;\n  const v = parseFloat(raw);\n  if (raw === 'unknown' || raw === 'unavailable' || Number.isNaN(v)) return '--';\n  return v.toFixed(1);\n]]]\n"
           note: "[[[\n  const age = parseFloat(states['sensor.garmin_connect_chronological_age']?.state || 0);\n  const fit = parseFloat(states['sensor.garmin_connect_fitness_age']?.state || 0);\n  if (!age || !fit) return 'Brak porównania';\n  const diff = (age - fit).toFixed(1);\n  return `${diff} lat lepiej`;\n]]]\n"
         styles:
