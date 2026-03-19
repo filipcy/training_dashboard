@@ -557,8 +557,8 @@ views:
           action: more-info
         custom_fields:
           label: Sugerowany trening
-          value: "[[[\n  const raw = states['sensor.garmin_connect_fitness_age']?.state;\n  const v = parseFloat(raw);\n  if (raw === 'unknown' || raw === 'unavailable' || Number.isNaN(v)) return '--';\n  return v.toFixed(1);\n]]]\n"
-          note: "[[[\n  const age = parseFloat(states['sensor.garmin_connect_chronological_age']?.state || 0);\n  const fit = parseFloat(states['sensor.garmin_connect_fitness_age']?.state || 0);\n  if (!age || !fit) return 'Brak porównania';\n  const diff = (age - fit).toFixed(1);\n  return `${diff} lat lepiej`;\n]]]\n"
+          value: "[[[\n  const type = (states['sensor.trening_dzisiaj']?.state || '').toLowerCase();\n  if (type === 'recovery') return 'Rower';\n  if (type === 'easy') return 'Bieg';\n  if (type === 'base') return 'Siłowy';\n  if (type === 'hard') return 'Bieg (akcent)';\n  return '—';\n]]]\n"
+          note: "[[[\n  const type = (states['sensor.trening_dzisiaj']?.state || '').toLowerCase();\n  if (type === 'recovery') return 'Niski koszt regeneracyjny';\n  if (type === 'easy') return 'Podtrzymanie formy';\n  if (type === 'base') return 'Budowanie bazy';\n  if (type === 'hard') return 'Bodziec jakościowy';\n  return '';\n]]]\n"
         styles:
           card:
           - border-radius: 26px
